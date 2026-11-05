@@ -1,0 +1,25 @@
+{
+ "skill_name": "hld-bygger",
+ "evals": [
+  {
+   "id": 1,
+   "prompt": "Jeg har lagt ved prisliste, tilbudssvar og etableringsplan for Eksempel Kraft AS, og et HLD-utkast. Sjekk utkastet mot kontraktsdokumentene og fortell meg hva som er feil eller i konflikt, før vi skriver noe mer.",
+   "expected_output": "Kjører opsjon_sjekk og hld_lint. Finner tre kandidatkonflikter (Mac, mikrosegmentering, sikker utskrift) og legger dem frem som konfliktrapport med alternativ A/B og konsekvens – uten å velge. Flagger dato 15.03.2027 mot 26.10.2026, 'kap. 11/12' som ikke finnes, 'Ardoq' og 'Jamf', tall som '40 servere'. Skriver ikke løsninger inn i HLD før brukeren har valgt.",
+   "files": [
+    "testkunde/prisliste.xlsx",
+    "testkunde/tilbud.txt",
+    "testkunde/etableringsplan.txt",
+    "testkunde/hld_utkast.docx"
+   ]
+  },
+  {
+   "id": 2,
+   "prompt": "Skriv kapittelet om Nettverk (segmentering og tilknytning til Azure) i HLD for Eksempel Kraft. Bruk prislisten som sannhet.",
+   "expected_output": "Stopper på mikrosegmentering (tilbud lover, prisliste = opsjon antall 0) og legger frem konflikt; skriver resten med kildeklasser (Kontrakt/Egen vurdering), ExpressRoute som grunnleveranse og Direct Link VPN som opsjon, uten volumtall, med eget Forutsetninger-kapittel og 'Intility foreslår' for egne anbefalinger.",
+   "files": [
+    "testkunde/prisliste.xlsx",
+    "testkunde/tilbud.txt"
+   ]
+  }
+ ]
+}

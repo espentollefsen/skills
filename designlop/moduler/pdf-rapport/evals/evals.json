@@ -1,0 +1,21 @@
+{
+ "skill_name": "pdf-rapport",
+ "evals": [
+  {
+   "id": 1,
+   "prompt": "Lag en PDF av Vedlegg A-regnearket som er mer inspirerende å lese enn en vanlig utskrift.",
+   "expected_output": "Bruker xlsx_til_pdf.py med nøkkeltallskort, gruppering på Leveransemodell, statusmerker; Endringslogg/Godkjenning er ikke med; ser på sidene før levering.",
+   "files": [
+    "testkunde/Vedlegg_A.xlsx"
+   ]
+  },
+  {
+   "id": 2,
+   "prompt": "Gjør det samme med Word-vedlegget (identitet) og med de andre vedleggene også.",
+   "expected_output": "Bruker docx_til_pdf.py med samme KPI-struktur og farger; hopper over Endringslogg/Godkjenning-kapitler; kontrollerer kulepunkter og tabeller visuelt.",
+   "files": [
+    "testkunde/Vedlegg_D.docx"
+   ]
+  }
+ ]
+}

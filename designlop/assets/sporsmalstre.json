@@ -1,0 +1,71 @@
+{
+ "_beskrivelse": "Spørsmålstre for designlop. Hver 'runde' er ett kall til ask_user_input_v0: maks 3 spørsmål, 2–4 korte alternativer per spørsmål. type: single_select | multi_select. 'hopp_over_hvis' angir hva skanningen/samtalen allerede må ha avklart for at spørsmålet utelates.",
+ "runde_0_start": {
+  "ingress": "Hva vil du gjøre? Velg én eller flere – jeg tar dem i riktig rekkefølge.",
+  "spørsmål": [
+   {"id": "oppgaver", "type": "multi_select", "spørsmål": "Hva skal gjøres? (velg én eller flere)",
+    "alternativer": ["Skrive eller sjekke HLD", "Bygge eller oppdatere vedlegg", "Gå gjennom kommentarer og endre dokumentene", "Lage figurer eller PDF-rapporter"]}
+  ]
+ },
+ "runde_1": {
+  "hld": {
+   "ingress": "HLD – noen raske avklaringer.",
+   "spørsmål": [
+    {"id": "hld_handling", "type": "single_select", "spørsmål": "Hva skal gjøres med HLD?",
+     "alternativer": ["Skrive nytt HLD / nye kapitler", "Sjekke eksisterende HLD mot kontrakten", "Revidere ett kapittel", "Bare finne kontraktskonflikter"]},
+    {"id": "hld_fagomrader", "type": "multi_select", "spørsmål": "Hvilke fagområder gjelder det?",
+     "alternativer": ["Applikasjon og lisens", "Identitet og workplace", "Nettverk og sikkerhet", "Migrering og roller"],
+     "hopp_over_hvis": "hld_handling = Bare finne kontraktskonflikter"},
+    {"id": "hld_register", "type": "single_select", "spørsmål": "Skal data hentes fra live register (MCP, f.eks. IntIpaas)?",
+     "alternativer": ["Ja, hent fra register", "Nei, bruk filene jeg har lastet opp", "Register er ikke tilgjengelig"],
+     "hopp_over_hvis": "ingen MCP-register er koblet til"}
+   ]},
+  "vedlegg": {
+   "ingress": "Vedlegg – noen raske avklaringer.",
+   "spørsmål": [
+    {"id": "vedlegg_omrade", "type": "multi_select", "spørsmål": "Hvilke vedlegg gjelder det?",
+     "alternativer": ["Applikasjoner og integrasjoner (register)", "Lisens og volum (register)", "Nettverk (register)", "Identitet, workplace eller migrering (Word)"]},
+    {"id": "vedlegg_handling", "type": "single_select", "spørsmål": "Hva skal gjøres?",
+     "alternativer": ["Bygge nytt", "Oppdatere mot register eller nye kilder", "Kontrollere mot reglene", "Velge struktur for detaljdesign"]},
+    {"id": "vedlegg_pdf", "type": "single_select", "spørsmål": "Skal det lages PDF-lesekopi også?",
+     "alternativer": ["Ja, designet PDF-rapport", "Nei, bare kildefilen"]}
+   ]},
+  "kommentarer": {
+   "ingress": "Kommentarløpet – hvor er du?",
+   "spørsmål": [
+    {"id": "kommentar_trinn", "type": "single_select", "spørsmål": "Hvor er du i kommentarløpet?",
+     "alternativer": ["Lage registre fra nye kommentarer", "Jeg har fylt ut registrene – gjennomfør", "Oppdatere vedlegg etter HLD-beslutningene", "Verifisere at alt er lukket og logget"]},
+    {"id": "kommentar_fagomrader", "type": "multi_select", "spørsmål": "Hvilke fagområder?",
+     "alternativer": ["Identitet og sikkerhet", "Workplace og lisens", "Nettverk", "Applikasjon og migrering"],
+     "hopp_over_hvis": "skanningen viser kommentarer fra bare ett fagområde"},
+    {"id": "kommentar_figurer", "type": "single_select", "spørsmål": "Skal figurene oppdateres hvis kommentarene berører dem?",
+     "alternativer": ["Ja", "Nei", "Spør meg underveis"]}
+   ]},
+  "figurer_pdf": {
+   "ingress": "Figurer og PDF – noen raske avklaringer.",
+   "spørsmål": [
+    {"id": "fig_hva", "type": "multi_select", "spørsmål": "Hva skal lages?",
+     "alternativer": ["Figur 1 – topologiskisse", "Figur 2 – nettverkstopologi", "PDF av figurene (A4 liggende)", "PDF-rapport av vedlegg"]},
+    {"id": "fig_utgangspunkt", "type": "single_select", "spørsmål": "Hva er utgangspunktet for figurene?",
+     "alternativer": ["Eksisterende SVG-master", "Min redigerte figur (bilde/Lucid)", "Bygge fra HLD-teksten", "Nytt visuelt uttrykk (3 forslag)"],
+     "hopp_over_hvis": "fig_hva inneholder bare «PDF-rapport av vedlegg»"},
+    {"id": "fig_i_hld", "type": "single_select", "spørsmål": "Skal figurene byttes inn i HLD-dokumentet?",
+     "alternativer": ["Ja, med endringslogg", "Nei, bare levere filene"],
+     "hopp_over_hvis": "fig_hva inneholder bare «PDF-rapport av vedlegg»"}
+   ]}
+ },
+ "runde_plan": {
+  "ingress": "Her er planen. Skal jeg kjøre?",
+  "spørsmål": [
+   {"id": "bekreft", "type": "single_select", "spørsmål": "Skal jeg starte på denne planen?",
+    "alternativer": ["Kjør", "Endre planen", "Vis først hva som vil skje, uten å gjøre noe"]}
+  ]
+ },
+ "mal_konfliktvalg": {
+  "_beskrivelse": "Brukes når en skill stopper på en kontraktskonflikt. Ett spørsmål per konflikt, maks 3 per runde. Fyll inn K-nr, tittel og konkrete alternativtekster fra konfliktrapporten.",
+  "spørsmål": [
+   {"id": "K-nn", "type": "single_select", "spørsmål": "K-nn: <tittel> – hva skal HLD-en si?",
+    "alternativer": ["A: følg tilbudet", "B: følg prislisten", "Hold åpen – avklares med PL"]}
+  ]
+ }
+}

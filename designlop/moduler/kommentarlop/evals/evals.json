@@ -1,0 +1,22 @@
+{
+ "skill_name": "kommentarlop",
+ "evals": [
+  {
+   "id": 1,
+   "prompt": "Fagteamene har kommentert hld_utkast.docx. Lag kommentarregistre per fagområde med forslag, så jeg kan ta stilling til dem.",
+   "expected_output": "Ekstraherer kommentarene (6, hvorav ett svar i tråd), grupperer på fagområde (identitet/workplace/nettverk), lager registre med sju kolonner og tom Revisjonskommentar-kolonne, flagger mikrosegmentering som kontraktskonflikt i Avklaringer, og endrer IKKE HLD-filen.",
+   "files": [
+    "testkunde/hld_utkast.docx"
+   ]
+  },
+  {
+   "id": 2,
+   "prompt": "Her er registrene med mine beslutninger: Godkjent på Monicas, Halvors og Jons rader, Avventer på Ingrids. Gjennomfør og lukk.",
+   "expected_output": "Leser beslutningene med les_register, lager spec, kjører bruk_endringer: endringene gjennomføres, endringslogg-kommentarer med opprinnelig kommentar ordrett legges inn, Monicas kommentarer inkl. svar lukkes, Ingrids holdes åpen med statusnotat. Verifiserer med ny ekstraksjon og validate.py.",
+   "files": [
+    "testkunde/hld_utkast.docx",
+    "testkunde/register_besluttet.docx"
+   ]
+  }
+ ]
+}

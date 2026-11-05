@@ -1,0 +1,106 @@
+{
+ "tittel": "Vedlegg D – Identitet",
+ "undertittel": "Detaljdesign for identitet og tilgang · Utkast 0.1",
+ "kunde": "Eksempel Kraft AS",
+ "meta": [
+  [
+   "Overordnet dokument",
+   "Løsningsdesign – Eksempel Kraft – HLD, kap. 4"
+  ],
+  [
+   "Eier",
+   "Intility IAM"
+  ],
+  [
+   "Kontraktsgrunnlag",
+   "Bilag 2 Vedlegg 2.2 kap. 7.1"
+  ],
+  [
+   "Godkjenning",
+   "Kunden ved avslutning av Fase 1"
+  ]
+ ],
+ "formal": [
+  "Vedlegget detaljerer HLD kap. 4. HLD-en fastsetter identitetsplattformen og prinsippene; dette vedlegget gir konfigurasjonsvalgene.",
+  "Innhold: kvittering; brukertyper; Conditional Access; åpne punkter. Godkjennes av Kunden ved avslutning av Fase 1."
+ ],
+ "kvittering": [
+  [
+   "Identity Manager inngår som plattform for identitetsforvaltning",
+   "Bekreftes",
+   "Standard iht. Bilag 7"
+  ],
+  [
+   "UPN settes lik primær e-postadresse",
+   "Åpen",
+   "Bekreftes av Kunden i Fase 1"
+  ]
+ ],
+ "kapitler": [
+  {
+   "overskrift": "Brukertyper",
+   "blokker": [
+    {
+     "type": "avsnitt",
+     "tekst": "Brukertypene følger Intilitys standard. Full User og Frontline er lisensprofiler."
+    },
+    {
+     "type": "tabell",
+     "kolonner": [
+      "Brukertype",
+      "Lisensprofil",
+      "Antall (prisgrunnlag)"
+     ],
+     "rader": [
+      [
+       "User",
+       "Business Premium",
+       "56"
+      ],
+      [
+       "User",
+       "F3",
+       "50"
+      ],
+      [
+       "External",
+       "B2B-gjest",
+       "0 – opsjon"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "overskrift": "Conditional Access",
+   "blokker": [
+    {
+     "type": "avsnitt",
+     "tekst": "Standardsettet forvaltes som kode av Intility."
+    },
+    {
+     "type": "punkter",
+     "punkter": [
+      "MFA for alle brukere",
+      "Blokkert legacy auth"
+     ]
+    }
+   ]
+  }
+ ],
+ "apne_punkter": {
+  "prefiks": "ÅP-D",
+  "rader": [
+   [
+    "HRM-integrasjon – parkert",
+    "Parkert",
+    "PL"
+   ],
+   [
+    "Compliant-device-håndhevelse",
+    "Beslutning",
+    "Kunden"
+   ]
+  ]
+ }
+}

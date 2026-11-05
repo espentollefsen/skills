@@ -1,0 +1,124 @@
+{
+ "tittel": "Vedlegg A – Applikasjoner og integrasjoner",
+ "kunde": "Eksempel Kraft AS",
+ "meta": [
+  [
+   "Overordnet dokument",
+   "Løsningsdesign – Eksempel Kraft – HLD, kap. 3 (Applikasjonsmiljø)"
+  ],
+  [
+   "Eier",
+   "Intility Applications"
+  ],
+  [
+   "Kontraktsgrunnlag",
+   "Bilag 2 Vedlegg 2.2 kap. 3; Bilag 7 Vedlegg 7.1"
+  ],
+  [
+   "Godkjenning",
+   "Kunden ved avslutning av Fase 1"
+  ]
+ ],
+ "formal": [
+  "Vedlegget detaljerer HLD kap. 3 (Applikasjonsmiljø) og er registeret for målporteføljen. HLD-en fastsetter leveransemodellene og kriteriene for plassering; dette vedlegget gir verdiene per applikasjon.",
+  "Innhold: kvittering av forutsetningene i HLD 3.7; applikasjonsliste; definisjoner. Godkjennes av Kunden ved avslutning av Fase 1."
+ ],
+ "kvittering": [
+  [
+   "Alle applikasjoner kan plasseres i en av leveransemodellene i HLD 3.3.1",
+   "Bekreftes",
+   "Kolonne Leveransemodell"
+  ],
+  [
+   "Kritikalitet settes av Kunden før godkjenning",
+   "Åpen",
+   "2 applikasjoner mangler"
+  ]
+ ],
+ "apne_punkter": {
+  "prefiks": "ÅP-A",
+  "rader": [
+   [
+    "Systemeier per applikasjon",
+    "Beslutning",
+    "Kunden"
+   ],
+   [
+    "Leveransemodell for Gprog",
+    "Beslutning",
+    "Arkitekt"
+   ]
+  ]
+ },
+ "registre": [
+  {
+   "navn": "Applikasjoner",
+   "kolonner": [
+    "Applikasjon",
+    "Leverandør",
+    "Leveransemodell",
+    "Kritikalitet",
+    "SaaS Management",
+    "Systemeier"
+   ],
+   "bredder": [
+    28,
+    22,
+    22,
+    14,
+    18,
+    18
+   ],
+   "rader": [
+    [
+     "Salesforce",
+     "Salesforce",
+     "Multi-tenant SaaS",
+     "Normal",
+     "Fastsettes i Fase 1",
+     "Fastsettes i Fase 1"
+    ],
+    [
+     "SmallWorld",
+     "Smallworld Nordic",
+     "Azure-arbeidslast",
+     "Critical",
+     "Ikke aktuelt",
+     "Fastsettes i Fase 1"
+    ],
+    [
+     "Xledger",
+     "Aider",
+     "Multi-tenant SaaS",
+     "",
+     "Fastsettes i Fase 1",
+     "Fastsettes i Fase 1"
+    ],
+    [
+     "Gprog",
+     "-",
+     "Klientapplikasjon",
+     "Normal",
+     "Ikke aktuelt",
+     "Fastsettes i Fase 1"
+    ]
+   ]
+  }
+ ],
+ "definisjoner": [
+  [
+   "Fastsettes i Fase 1",
+   "Verdien fylles ut etter kartleggingen i Fase 1."
+  ]
+ ],
+ "oppsummering": [
+  [
+   "Applikasjoner i vedlegget",
+   "=COUNTA(Applikasjoner!A2:A5)"
+  ],
+  [
+   "Kritikalitet ikke satt",
+   "=COUNTBLANK(Applikasjoner!D2:D5)"
+  ]
+ ]
+}

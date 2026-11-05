@@ -1,0 +1,21 @@
+{
+ "skill_name": "vedlegg-bygger",
+ "evals": [
+  {
+   "id": 1,
+   "prompt": "Lag Vedlegg A (applikasjonsregister) for Eksempel Kraft som Excel, ut fra denne spec-en. Det skal kunne leses av ARF.",
+   "expected_output": "Bruker bygg_vedlegg_xlsx.py; arket Dokumentinfo har 'Formål og innhold i forhold til HLD', kvitteringstabell og genererte ÅP-ID-er (ÅP-A-01…); ingen Endringslogg/Godkjenning-ark; vedlegg_lint gir 0 feil; formler regnes ut.",
+   "files": [
+    "vedlegg-bygger/evals/files/vedlegg_a_spec.json"
+   ]
+  },
+  {
+   "id": 2,
+   "prompt": "Lag Vedlegg D (identitet) som Word for Eksempel Kraft ut fra spec-en, og kontroller at det følger reglene. Legg også på en endringslogg og en godkjenningstabell nederst.",
+   "expected_output": "Bygger docx via bygg_vedlegg_docx.py, men legger IKKE til endringslogg eller godkjenningstabell og forklarer hvorfor (vedlegg skal ikke ha dem; endringslogg ligger i HLD-kommentarene). Lint 0 feil; docx validerer.",
+   "files": [
+    "vedlegg-bygger/evals/files/vedlegg_d_spec.json"
+   ]
+  }
+ ]
+}

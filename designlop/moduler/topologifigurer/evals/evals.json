@@ -1,0 +1,21 @@
+{
+ "skill_name": "topologifigurer",
+ "evals": [
+  {
+   "id": 1,
+   "prompt": "Lag en topologiskisse for Eksempel Kraft i samme stil som våre andre figurer, med PNG til Word og en A4-liggende PDF.",
+   "expected_output": "Skriver spec fra assets/eksempel_spec.json, genererer SVG, kjører sjekk_overflow (OK), renderer PNG og PDF, ser på bildet. Kun blokkpiler mellom soner, ingen forbindelseslinjer.",
+   "files": [
+    "topologifigurer/assets/eksempel_spec.json"
+   ]
+  },
+  {
+   "id": 2,
+   "prompt": "Figuren har en boks der teksten går utenfor. Fiks den uten å gjøre skriften mindre, og bytt figuren inn i Word-dokumentet.",
+   "expected_output": "Sjekk_overflow finner linjen; teksten kortes ned (ikke skriftstørrelse); bytt_bilde_i_docx --liste brukes for å finne riktig bilde, og bildet byttes med bevart bredde.",
+   "files": [
+    "testkunde/medbilde.docx"
+   ]
+  }
+ ]
+}

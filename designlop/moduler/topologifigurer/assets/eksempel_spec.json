@@ -1,0 +1,319 @@
+{
+ "tittel": "Eksempel Kraft AS – topologiskisse (målbilde på Intilitys plattformtjeneste)",
+ "bredde": 1800,
+ "hoyde": 900,
+ "soner": [
+  {
+   "id": "lok",
+   "tittel": "Eksempel Kraft – lokasjoner og brukere",
+   "x": 30,
+   "y": 60,
+   "b": 1530,
+   "h": 150,
+   "farge": "blue",
+   "bokser": [
+    {
+     "x": 45,
+     "y": 95,
+     "b": 330,
+     "h": 105,
+     "tittel": "Hovedanlegg – produksjon",
+     "linjer": [
+      "Kontor-IT: Intune-klienter, print"
+     ]
+    },
+    {
+     "x": 390,
+     "y": 95,
+     "b": 330,
+     "h": 105,
+     "tittel": "Kontor",
+     "linjer": [
+      "~80 ansatte",
+      "Intune Managed Clients",
+      "Teams Rooms · Print · LAN/Wi-Fi"
+     ]
+    },
+    {
+     "x": 735,
+     "y": 95,
+     "b": 330,
+     "h": 105,
+     "tittel": "Hjemmekontor / felt",
+     "linjer": [
+      "Intune-klienter og mobil",
+      "Conditional Access / MFA",
+      "Fjerntilgang til interne ressurser"
+     ]
+    },
+    {
+     "x": 1080,
+     "y": 95,
+     "b": 330,
+     "h": 105,
+     "tittel": "Tredjeparter",
+     "linjer": [
+      "Applikasjons-/driftsleverandører",
+      "Navngitte brukere i kundens tenant",
+      "PAM / JIT via Platform Manager"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "til",
+   "tittel": "Tilkobling",
+   "x": 30,
+   "y": 245,
+   "b": 1530,
+   "h": 80,
+   "farge": "neutral",
+   "bokser": [
+    {
+     "x": 45,
+     "y": 278,
+     "b": 520,
+     "h": 38,
+     "tittel": "WAN – Managed SD-WAN (kryptert)",
+     "linjer": []
+    },
+    {
+     "x": 580,
+     "y": 278,
+     "b": 330,
+     "h": 38,
+     "tittel": "Internett",
+     "linjer": []
+    }
+   ]
+  },
+  {
+   "id": "plat",
+   "tittel": "Intility nettverks- og sikkerhetsplattform",
+   "x": 30,
+   "y": 360,
+   "b": 1530,
+   "h": 90,
+   "farge": "navy",
+   "bokser": [
+    {
+     "x": 45,
+     "y": 395,
+     "b": 480,
+     "h": 45,
+     "tittel": "Geo-redundante NGFW-clustere",
+     "linjer": []
+    },
+    {
+     "x": 540,
+     "y": 395,
+     "b": 480,
+     "h": 45,
+     "tittel": "ADC / iDMZ",
+     "linjer": []
+    },
+    {
+     "x": 1035,
+     "y": 395,
+     "b": 510,
+     "h": 45,
+     "tittel": "Dedikert nettverkstenant",
+     "linjer": []
+    }
+   ]
+  },
+  {
+   "id": "incloud",
+   "tittel": "Intility InCloud – suveren sky",
+   "x": 30,
+   "y": 485,
+   "b": 470,
+   "h": 250,
+   "farge": "blue",
+   "bokser": [
+    {
+     "x": 45,
+     "y": 522,
+     "b": 440,
+     "h": 60,
+     "tittel": "Dedikert Active Directory",
+     "linjer": [
+      "Egen AD-forest og eget domene"
+     ]
+    },
+    {
+     "x": 45,
+     "y": 592,
+     "b": 212,
+     "h": 70,
+     "tittel": "Fagapplikasjoner",
+     "linjer": [
+      "Re-etablert fra Vedlegg A"
+     ]
+    },
+    {
+     "x": 273,
+     "y": 592,
+     "b": 212,
+     "h": 70,
+     "tittel": "Plattformtjenester",
+     "linjer": [
+      "Fil · Print · Backup"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "azure",
+   "tittel": "Microsoft Azure – Landing Zone",
+   "x": 520,
+   "y": 485,
+   "b": 470,
+   "h": 250,
+   "farge": "purple",
+   "bokser": [
+    {
+     "x": 535,
+     "y": 522,
+     "b": 440,
+     "h": 75,
+     "tittel": "Integrasjonsplattform (iPaaS)",
+     "linjer": [
+      "API Management · Service Bus",
+      "Key Vault · Logic Apps"
+     ],
+     "type": "box"
+    },
+    {
+     "x": 535,
+     "y": 607,
+     "b": 440,
+     "h": 60,
+     "tittel": "Opsjoner (Bilag 7)",
+     "linjer": [
+      "Dataplattform"
+     ],
+     "type": "dashed"
+    }
+   ]
+  },
+  {
+   "id": "m365",
+   "tittel": "Microsoft 365 – kundens egen tenant",
+   "x": 1010,
+   "y": 485,
+   "b": 550,
+   "h": 250,
+   "farge": "green",
+   "bokser": [
+    {
+     "x": 1025,
+     "y": 522,
+     "b": 520,
+     "h": 75,
+     "tittel": "Entra ID",
+     "linjer": [
+      "Én identitet per person · SSO · Conditional Access · MFA"
+     ]
+    },
+    {
+     "x": 1025,
+     "y": 607,
+     "b": 520,
+     "h": 60,
+     "tittel": "Multi-tenant SaaS",
+     "linjer": [
+      "Entra ID SSO/SCIM · API via APIM"
+     ],
+     "type": "dashed"
+    }
+   ]
+  }
+ ],
+ "stripe": {
+  "x": 1580,
+  "y": 60,
+  "b": 190,
+  "h": 675,
+  "tittel": "Intility drift og sikkerhet 24/7",
+  "seksjoner": [
+   {
+    "overskrift": "SOC",
+    "linjer": [
+     "Overvåkning · deteksjon",
+     "Sentral logginnhenting"
+    ]
+   },
+   {
+    "overskrift": "NOC / IOC",
+    "linjer": [
+     "Nettverk · plattform",
+     "Patching · backup"
+    ]
+   },
+   {
+    "overskrift": "Selvbetjening",
+    "linjer": [
+     "Platform Manager",
+     "Identity Manager"
+    ]
+   }
+  ]
+ },
+ "piler": [
+  {
+   "retning": "ned",
+   "x": 450,
+   "y1": 212,
+   "y2": 243
+  },
+  {
+   "retning": "ned",
+   "x": 1300,
+   "y1": 212,
+   "y2": 243
+  },
+  {
+   "retning": "ned",
+   "x": 450,
+   "y1": 327,
+   "y2": 358
+  },
+  {
+   "retning": "opp",
+   "x": 900,
+   "y1": 358,
+   "y2": 327
+  },
+  {
+   "retning": "ned",
+   "x": 265,
+   "y1": 452,
+   "y2": 483
+  },
+  {
+   "retning": "ned",
+   "x": 755,
+   "y1": 452,
+   "y2": 483
+  },
+  {
+   "retning": "ned",
+   "x": 1285,
+   "y1": 452,
+   "y2": 483
+  }
+ ],
+ "tegnforklaring": {
+  "x": 30,
+  "y": 770,
+  "b": 1530,
+  "h": 110,
+  "tittel": "Prinsipper",
+  "linjer": [
+   "Alle API-transaksjoner går via én felles API Management; direkte koblinger krever godkjenning.",
+   "Én identitet per person i kundens egen tenant.",
+   "Publisering ut mot internett kun via ADC/iDMZ."
+  ]
+ }
+}
