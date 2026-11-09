@@ -1,0 +1,381 @@
+{
+  "meta": {
+    "title": "nordly-kundeportal-prod",
+    "diagram_name": "nordly-kundeportal-prod",
+    "region": "norwayeast",
+    "notes_title": "Notater"
+  },
+  "theme": "bifrost",
+  "bands": [
+    {
+      "id": "client_box",
+      "kind": "clients",
+      "label": "Eksterne brukere  ·  https://portal.nordly.no"
+    },
+    {
+      "id": "online_gw",
+      "kind": "azure",
+      "scope": "online",
+      "mg": "nordly-online",
+      "sub": "nordly-shared-gateway",
+      "rg": "rg-agw-network-prod",
+      "vnet": {
+        "label": "vnet-shared-agw-prod (10.0.0.0/23)",
+        "w": 700
+      },
+      "subnets": [
+        {
+          "id": "snet_agw",
+          "label": "snet-agw-prod (10.0.0.0/24)",
+          "nsg": "nsg-agw-prod",
+          "rows": [
+            {
+              "id": "agw",
+              "icon": "agw",
+              "label": "<b>agw-shared-prod</b> · Application Gateway (WAF_v2)<br>portal.nordly.no · sertifikat: kv-cert-prod (Intility ACME) · sonefordelt"
+            },
+            {
+              "id": "pip",
+              "icon": "pip",
+              "label": "<b>pip-agw-shared-prod</b><br>Public IP · Standard · Statisk · A-record for portal.nordly.no"
+            }
+          ]
+        }
+      ],
+      "peers": [
+        {
+          "to": "online_wl",
+          "label": "VNet peering (direkte) — AGW → backend"
+        }
+      ]
+    },
+    {
+      "id": "online_wl",
+      "kind": "azure",
+      "scope": "online",
+      "mg": "nordly-online",
+      "sub": "nordly-kundeportal-prod",
+      "rg": "rg-app-prod",
+      "vnet": {
+        "label": "vnet-kundeportal-online-prod (10.1.0.0/22)",
+        "w": 680
+      },
+      "subnets": [
+        {
+          "id": "snet_app",
+          "label": "snet-app-kundeportal-prod (10.1.0.0/26)",
+          "nsg": "nsg-app-prod",
+          "rows": [
+            {
+              "id": "app",
+              "icon": "app",
+              "label": "<b>app-kundeportal-prod</b> · App Service · portal.nordly.no<br>delegert Microsoft.Web/serverFarms · sertifikat: kv-cert-prod (Intility ACME)"
+            }
+          ]
+        },
+        {
+          "id": "snet_peonline",
+          "label": "snet-pe-online-kundeportal-prod (10.1.1.0/27)",
+          "nsg": "nsg-pe-online-prod",
+          "rows": [
+            {
+              "id": "pe_app",
+              "icon": "pe",
+              "label": "<b>pe-app-kundeportal-prod</b><br>PE → app-kundeportal-prod · AGW backend pool"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conn",
+      "kind": "azure",
+      "scope": "connectivity",
+      "mg": "nordly-connectivity",
+      "sub": "nordly-connectivity-prod",
+      "rg": "rg-conn-prod",
+      "vnet": {
+        "label": "vnet-hub-prod (10.10.0.0/22)",
+        "w": 580
+      },
+      "subnets": [
+        {
+          "id": "snet_gw",
+          "label": "GatewaySubnet (10.10.0.0/27)",
+          "rows": [
+            {
+              "id": "vpng",
+              "icon": "vpng",
+              "label": "<b>vpng-hub-prod</b> · VPN Gateway VpnGw2AZ<br>Direct Link / S2S mot Intility InCloud"
+            }
+          ]
+        },
+        {
+          "id": "snet_dnsprin",
+          "label": "snet-dnspr-in-prod (10.10.1.0/28)",
+          "nsg": "nsg-dnspr-in-prod",
+          "rows": [
+            {
+              "id": "dnspr_in",
+              "icon": "dnspr",
+              "label": "<b>dnspr-hub-prod</b> · DNS Private Resolver · Inbound endpoint<br>delegert Microsoft.Network/dnsResolvers · on-prem løser Azure-soner"
+            }
+          ]
+        },
+        {
+          "id": "snet_dnsprout",
+          "label": "snet-dnspr-out-prod (10.10.1.16/28)",
+          "nsg": "nsg-dnspr-ut-prod",
+          "rows": [
+            {
+              "id": "dnspr_out",
+              "icon": "dnspr",
+              "label": "<b>dnspr-hub-prod</b> · DNS Private Resolver · Outbound endpoint<br>delegert Microsoft.Network/dnsResolvers · Azure løser nordly.local"
+            }
+          ]
+        }
+      ],
+      "right_column": {
+        "kind": "dns",
+        "rows": [
+          {
+            "id": "pdns_web",
+            "label": "<b>privatelink.azurewebsites.net</b>"
+          },
+          {
+            "id": "pdns_kv",
+            "label": "<b>privatelink.vaultcore.azure.net</b>"
+          },
+          {
+            "id": "pdns_sql",
+            "label": "<b>privatelink.database.windows.net</b>"
+          },
+          {
+            "id": "pdns_blob",
+            "label": "<b>privatelink.blob.core.windows.net</b>"
+          },
+          {
+            "id": "pdns_acr",
+            "label": "<b>privatelink.azurecr.io</b>"
+          },
+          {
+            "id": "pdns_mon",
+            "label": "<b>privatelink.monitor.azure.com</b>"
+          },
+          {
+            "id": "pdns_oms",
+            "label": "<b>privatelink.oms.opinsights.azure.com</b>"
+          },
+          {
+            "id": "pdns_ods",
+            "label": "<b>privatelink.ods.opinsights.azure.com</b>"
+          },
+          {
+            "id": "pdns_agent",
+            "label": "<b>privatelink.agentsvc.azure-automation.net</b>"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mgmt",
+      "kind": "azure",
+      "scope": "management",
+      "mg": "nordly-management",
+      "sub": "nordly-management-prod",
+      "rg": "rg-cert-prod",
+      "peers_hub": false,
+      "rows": [
+        {
+          "id": "kvcert",
+          "icon": "kv",
+          "label": "<b>kv-cert-prod</b> · Key Vault for sertifikater · delt for alle løsninger<br>Offentlig endepunkt — ACME bruker ikke privat nettverk · soft-delete + purge protection"
+        },
+        {
+          "id": "acme",
+          "icon": "cert",
+          "label": "<b>Intility ACME</b> · utsteder og fornyer sertifikater<br>Skriver til kv-cert over offentlig endepunkt — ingen private endpoints"
+        }
+      ]
+    },
+    {
+      "id": "corp",
+      "kind": "azure",
+      "scope": "corp",
+      "mg": "nordly-corp",
+      "sub": "nordly-kundeportal-prod",
+      "rg": "rg-network-prod",
+      "vnet": {
+        "label": "vnet-kundeportal-corp-prod (10.20.0.0/22)",
+        "w": 680
+      },
+      "subnets": [
+        {
+          "id": "snet_pe",
+          "label": "snet-pe-kundeportal-prod (10.20.1.0/27)",
+          "nsg": "nsg-pe-prod",
+          "rows": [
+            {
+              "id": "pe_kv",
+              "icon": "pe",
+              "label": "<b>pe-kv-kundeportal-prod</b><br>PE → kv-kundeportal-prod"
+            },
+            {
+              "id": "pe_sql",
+              "icon": "pe",
+              "label": "<b>pe-sql-kundeportal-prod</b><br>PE → sql-kundeportal-prod"
+            },
+            {
+              "id": "pe_st",
+              "icon": "pe",
+              "label": "<b>pe-st-kundeportal-prod</b><br>PE → stkundeportalprod (blob)"
+            },
+            {
+              "id": "pe_cr",
+              "icon": "pe",
+              "label": "<b>pe-cr-kundeportal-prod</b><br>PE → crkundeportalprod"
+            },
+            {
+              "id": "pe_ampls",
+              "icon": "pe",
+              "label": "<b>pe-ampls-kundeportal-prod</b><br>PE → ampls-kundeportal-prod (Monitor)"
+            }
+          ]
+        }
+      ],
+      "right_column": {
+        "kind": "paas",
+        "rows": [
+          {
+            "id": "kv",
+            "icon": "kv",
+            "label": "<b>kv-kundeportal-prod</b><br>Key Vault · soft-delete + purge protection"
+          },
+          {
+            "id": "sqldb",
+            "icon": "sqldb",
+            "label": "<b>sqldb-kundeportal-prod</b><br>SQL Database GP · sonefordelt"
+          },
+          {
+            "id": "st",
+            "icon": "st",
+            "label": "<b>stkundeportalprod</b><br>Storage · Standard_ZRS"
+          },
+          {
+            "id": "cr",
+            "icon": "cr",
+            "label": "<b>crkundeportalprod</b><br>Container Registry · Premium"
+          },
+          {
+            "id": "log",
+            "icon": "log",
+            "label": "<b>log-kundeportal-prod</b><br>Log Analytics · 90 dagers retensjon"
+          },
+          {
+            "id": "appi",
+            "icon": "appi",
+            "label": "<b>appi-kundeportal-prod</b><br>Application Insights → log-kundeportal-prod"
+          },
+          {
+            "id": "id",
+            "icon": "id",
+            "label": "<b>id-kundeportal-prod</b><br>User-Assigned Managed Identity"
+          }
+        ]
+      }
+    },
+    {
+      "id": "incloud_box",
+      "kind": "incloud",
+      "label": "Intility InCloud",
+      "rows": [
+        {
+          "id": "incloud_dns",
+          "icon": "dns",
+          "label": "<b>nordly InCloud DNS</b><br>Forward lookup zone: nordly.local → InCloud DNS-servere (outbound ruleset på dnspr-hub-prod)"
+        },
+        {
+          "id": "incloud_sql",
+          "icon": "vm",
+          "label": "<b>sql01.nordly.local</b><br>TCP 1433 — SQL Server on-prem"
+        },
+        {
+          "id": "incloud_fil",
+          "icon": "vm",
+          "label": "<b>fil01.nordly.local</b><br>TCP 445 — SMB filshare"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "title": "1. Nettverk",
+      "items": [
+        "Region: norwayeast. Hub-and-spoke — spoke peerer kun mot hub, aldri mot hverandre.",
+        "vnet-shared-agw-prod 10.0.0.0/23 · snet-agw /24 (anbefalt for autoskalering av WAF_v2)",
+        "vnet-kundeportal-online-prod 10.1.0.0/22 · vnet-kundeportal-corp-prod 10.20.0.0/22 · vnet-hub-prod 10.10.0.0/22",
+        "NSG på alle subnet unntatt GatewaySubnet (ikke støttet/anbefalt)."
+      ]
+    },
+    {
+      "title": "2. SKU-valg",
+      "items": [
+        "Application Gateway WAF_v2 — eneste SKU med WAF og autoskalering.",
+        "VPN Gateway VpnGw2AZ — sonefordelt, krav i prod.",
+        "Container Registry Premium — kreves for private endpoint.",
+        "SQL General Purpose sonefordelt · Storage Standard_ZRS."
+      ]
+    },
+    {
+      "title": "3. Backup/DR",
+      "items": [
+        "Key Vault: soft-delete + purge protection påkrevd.",
+        "SQL: PITR 7 dager, ukentlig LTR 12 mnd. RPO 1t / RTO 4t.",
+        "Storage: versjonering + soft-delete 30 dager."
+      ]
+    },
+    {
+      "title": "4. Identitet/Auth",
+      "items": [
+        "id-kundeportal-prod → Key Vault Secrets User på kv-kundeportal-prod",
+        "id-kundeportal-prod → AcrPull på crkundeportalprod",
+        "Ingen service principals eller secrets i bruk — kun Managed Identity."
+      ]
+    },
+    {
+      "title": "5. DNS",
+      "items": [
+        "Alle privatelink-soner ligger i nordly-connectivity og er lenket til alle tre spoke-VNet.",
+        "ACR: kun privatelink.azurecr.io. Det regionale data-endepunktet blir egne poster i samme sone med Azure Private DNS — ikke en egen sone.",
+        "Azure Monitor via AMPLS krever alle fire soner + blob-sonen.",
+        "A-record portal.nordly.no → pip-agw-shared-prod må opprettes i offentlig DNS."
+      ]
+    },
+    {
+      "title": "6. Application Gateway",
+      "items": [
+        "WAF Policy OWASP 3.2, Prevention mode.",
+        "AGW-VNet peeres DIREKTE mot workload-VNet. Peering er ikke-transitiv — via hub alene når ikke AGW backend-poolen. Trafikken går da utenom sentral brannmurinspeksjon.",
+        "Sertifikatkjede: Intility ACME utsteder → lagres i kv-cert-prod i nordly-management → AGW leser via managed identity (Key Vault Secrets User).",
+        "App Service Managed Certificate er ikke støttet bak AGW — bekreftet mot Microsoft Learn.",
+        "Backend pool peker på pe-app-kundeportal-prod (privat IP), ikke offentlig endepunkt.",
+        "kv-cert har OFFENTLIG endepunkt — Intility ACME bruker ikke privat nettverk. Bevisst unntak fra private-by-default; kompenserende kontroller (KV-brannmur, RBAC) må bekreftes."
+      ]
+    },
+    {
+      "title": "7. Intility InCloud",
+      "items": [
+        "sql01.nordly.local — TCP 1433 fra snet-app",
+        "fil01.nordly.local — TCP 445 fra snet-app",
+        "Brannmurregler må åpnes begge veier over Direct Link."
+      ]
+    },
+    {
+      "title": "8. Åpne spørsmål",
+      "items": [
+        "Skal test-/QA-miljø dele hub, eller ha egen connectivity-subscription?",
+        "Er 10.20.0.0/22 ledig i kundens IP-plan?"
+      ]
+    }
+  ]
+}
